@@ -1,5 +1,7 @@
 ---
-const { doc } = Astro.props
+import Markdown from './Markdown.astro'
+
+const doc = Astro.props.doc.join('\n')
 ---
 
-{doc.map((line) => <p>{line}</p>)}
+<Markdown doc={doc} />
