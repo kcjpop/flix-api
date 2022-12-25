@@ -1,0 +1,14 @@
+---
+const { tparam } = Astro.props
+---
+
+<span>
+  {tparam.name}
+  {
+    tparam.withKind === false ? null : (
+      <>
+        <span> : </span> <span>{tparam.kind}</span>
+      </>
+    )
+  }
+</span>

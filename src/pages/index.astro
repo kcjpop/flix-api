@@ -1,8 +1,13 @@
 ---
+import './index.module.css'
 import BaseLayout from '../layouts/Base.astro'
-import './index.css'
+import { getNamespaces } from '../data'
 ---
 
 <BaseLayout>
   <h1>Hello</h1>
+
+  <div class="grid gap-2">
+    {getNamespaces().map((ns) => <a href={`/${ns}`}>{ns}</a>)}
+  </div>
 </BaseLayout>

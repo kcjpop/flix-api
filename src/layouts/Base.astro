@@ -1,6 +1,7 @@
 ---
 import 'open-props'
 import 'open-props/normalize.min.css'
+import '../utils.css'
 ---
 
 <html lang="en">
@@ -11,7 +12,10 @@ import 'open-props/normalize.min.css'
     <meta name="generator" content={Astro.generator} />
     <title>api.flix.dev</title>
   </head>
-  <body>
+  <body style="padding: 16px;">
+    <header>
+      <a href="/">Home</a>
+    </header>
     <slot />
   </body>
 </html>
