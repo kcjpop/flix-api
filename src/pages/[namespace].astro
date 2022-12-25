@@ -36,4 +36,20 @@ const ns = getNamespace(namespace)
       }
     </div>
   </div>
+
+  <div>
+    <h2>Definitions</h2>
+
+    <div class="grid gap-3">
+      {
+        ns.defs?.map((d) => (
+          <Card id={`d-${d.sym.name}`}>
+            <p>def {d.sym.name}</p>
+
+            <Doc doc={d.doc} />
+          </Card>
+        ))
+      }
+    </div>
+  </div>
 </BaseLayout>
