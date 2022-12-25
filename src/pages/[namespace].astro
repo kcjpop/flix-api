@@ -1,0 +1,15 @@
+---
+import BaseLayout from '../layouts/Base.astro'
+import { getVersion } from '../data.js'
+
+export function getStaticPaths() {
+  return [{ params: { namespace: 'Prelude' } }]
+}
+
+const { namespace } = Astro.params
+---
+
+<BaseLayout>
+  <h1>{namespace}</h1>
+  <h3>{getVersion()}</h3>
+</BaseLayout>
