@@ -8,12 +8,12 @@ export function getNamespaces() {
   return api.namespaces
 }
 
-export function getNamespace(ns) {
+export function getNamespace(name) {
   return {
-    name: ns,
-    classes: api.classes[ns],
-    enums: api.enums[ns],
-    typeAliases: api.typeAliases[ns],
-    defs: api.defs[ns],
+    name,
+    classes: api.classes[name],
+    enums: api.enums[name],
+    typeAliases: api.typeAliases[name],
+    defs: api.defs[name],
   }
 }
