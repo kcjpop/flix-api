@@ -1,3 +1,5 @@
+@custom-media --large (min-width: 80em);
+
 body {
   /* Default separator character used in type parameters, formal parameters, etc. */
   --sep: ', ';
@@ -7,7 +9,7 @@ body {
     monospace;
 
   --aside-width: 15svw;
-  --main-content-height: 99vh;
+  --main-content-height: 100vh;
 
   --surface-1: #fff;
 
@@ -28,20 +30,33 @@ body {
   color: var(--gray-8);
 }
 
-.main {
-  grid-template-columns: var(--aside-width) 1fr var(--aside-width);
+.app {
+  @media (--large) {
+    display: grid;
+    grid-template-columns: var(--aside-width) 1fr var(--aside-width);
+  }
 }
 
-.main main {
-  height: var(--main-content-height);
-  overflow: auto;
+.main {
+  padding-left: var(--size-3);
+  padding-right: var(--size-3);
+
+  @media (--large) {
+    height: var(--main-content-height);
+    overflow: auto;
+  }
 }
 
 .aside {
-  height: var(--main-content-height);
-  overflow: auto;
-  position: sticky;
-  top: 8px;
+  display: none;
+
+  @media (--large) {
+    display: block;
+    height: var(--main-content-height);
+    overflow: auto;
+    position: sticky;
+    top: var(--size-1);
+  }
 }
 
 .t-keyword {
