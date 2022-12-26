@@ -1,0 +1,12 @@
+---
+import TypeConstraints from './TypeConstraints.astro'
+const { inst } = Astro.props
+---
+
+<div class="t-keywork">
+  instance
+
+  <span class="t-type">{inst.tpe}</span>
+
+  <TypeConstraints tcs={inst.tcs} />
+</div>

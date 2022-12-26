@@ -6,22 +6,24 @@ import Source from './Source.astro'
 const { defs, classList, summary, open = false } = Astro.props
 ---
 
-<details class:list={classList} open={open}>
-  <summary class="mb-3">{summary}</summary>
+{
+  defs?.length > 0 && (
+    <details class:list={classList} open={open}>
+      <summary class="mb-3">{summary}</summary>
 
-  <div class="grid gap-2">
-    {
-      defs.map((sig) => (
-        <>
-          <div class="font-mono flex gap-2 align-center justify-space-between">
-            <Signature sig={sig} />
-            <Source loc={sig.loc} />
-          </div>
-          <div class="pl-3">
-            <Doc doc={sig.doc} />
-          </div>
-        </>
-      ))
-    }
-  </div>
-</details>
+      <div class="grid gap-2">
+        {defs.map((sig) => (
+          <>
+            <div class="font-mono flex gap-2 align-center justify-space-between">
+              <Signature sig={sig} />
+              <Source loc={sig.loc} />
+            </div>
+            <div class="pl-3">
+              <Doc doc={sig.doc} />
+            </div>
+          </>
+        ))}
+      </div>
+    </details>
+  )
+}
