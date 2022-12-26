@@ -1,9 +1,17 @@
+.font-mono {
+  font-family: var(--font-mono);
+}
+
 .flex {
   display: flex;
 }
 
 .grid {
   display: grid;
+}
+
+.align-center {
+  align-items: center;
 }
 
 .justify-space-between {

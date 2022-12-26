@@ -4,6 +4,8 @@ import { getVersion, getNamespaces, getNamespace } from '../data.js'
 import BaseLayout from '../layouts/Base.astro'
 import Doc from '../components/Doc.astro'
 import TypeParam from '../components/TypeParam.astro'
+import TypeConstraints from '../components/TypeConstraints.astro'
+import Source from '../components/Source.astro'
 import Card from '../components/Card.astro'
 
 export function getStaticPaths() {
@@ -27,9 +29,14 @@ const ns = getNamespace(namespace)
       {
         ns.classes?.map((c) => (
           <Card id={`c-${c.sym.name}`}>
-            <p>
-              class {c.sym.name} [<TypeParam tparam={c.tparam} />]
-            </p>
+            <div class="font-mono flex align-center justify-space-between">
+              <p>
+                class <span class="t-name">{c.sym.name}</span>
+                [<TypeParam tparam={c.tparam} />]
+                <TypeConstraints superclasses={c.superClasses} />
+              </p>
+              <Source loc={c.loc} />
+            </div>
             <Doc doc={c.doc} />
           </Card>
         ))
@@ -44,7 +51,7 @@ const ns = getNamespace(namespace)
       {
         ns.defs?.map((d) => (
           <Card id={`d-${d.sym.name}`}>
-            <p>def {d.sym.name}</p>
+            <p class="font-mono">def {d.sym.name}</p>
 
             <Doc doc={d.doc} />
           </Card>

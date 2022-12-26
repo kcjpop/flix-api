@@ -1,0 +1,21 @@
+:root {
+  --t-name: #b12250;
+  --t-type: #3061c4;
+  --t-kind: #8a8a8a;
+}
+
+.t-name {
+  color: var(--t-name);
+}
+
+.t-type {
+  color: var(--t-type);
+}
+
+.t-kind {
+  color: var(--t-kind);
+}
+
+.t-typeconstraint-name {
+  text-decoration: underline;
+}

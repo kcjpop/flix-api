@@ -1,0 +1,11 @@
+---
+import { getVersion } from '../data'
+
+const { loc } = Astro.props
+
+const url = `https://github.com/flix/flix/tree/${getVersion()}/main/src/library/${
+  loc.name
+}#L${loc.beginLine}-L${loc.endLine}`
+---
+
+<a target="_blank" rel="noopener noreferrer" href={url}>Source</a>

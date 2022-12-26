@@ -1,0 +1,17 @@
+---
+const { superclasses } = Astro.props
+---
+
+{
+  superclasses?.length > 0 && (
+    <>
+      <span class="t-keyword">with</span>{' '}
+      {superclasses?.map((tc, i, arr) => (
+        <>
+          {/* Should we have a link to those type constraint? */}
+          <span class="t-typeconstraint-name">{tc.sym.name}</span>[<span class="t-type">{tc.tpe}</span>]{i < arr.length - 1 && ', '}
+        </>
+      ))}
+    </>
+  )
+}
