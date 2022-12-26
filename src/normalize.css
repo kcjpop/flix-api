@@ -265,26 +265,6 @@
   padding-inline-start: var(--size-2);
 }
 
-:where(summary) {
-  background: var(--surface-3);
-  padding: var(--size-2) var(--size-3);
-  margin: calc(var(--size-2) * -1) calc(var(--size-3) * -1);
-  border-radius: var(--radius-2);
-}
-
-:where(details) {
-  padding-inline: var(--size-3);
-  padding-block: var(--size-2);
-  background: var(--surface-2);
-  border-radius: var(--radius-2);
-}
-
-:where(details[open] > summary) {
-  margin-bottom: var(--size-2);
-  border-end-start-radius: 0;
-  border-end-end-radius: 0;
-}
-
 :where(fieldset) {
   border-radius: var(--radius-2);
   border: var(--border-size-1) solid var(--surface-4);
@@ -304,21 +284,6 @@
   text-decoration-color: var(--blue-5);
 }
 
-:where(dialog) {
-  background-color: var(--surface-1);
-  color: inherit;
-  border-radius: var(--radius-3);
-  box-shadow: var(--shadow-6);
-
-  &::backdrop {
-    backdrop-filter: blur(25px);
-  }
-}
-
-:where(html:has(dialog[open])) {
-  overflow: hidden;
-}
-
 :where(menu) {
   padding-inline-start: 0;
   display: flex;
@@ -328,3 +293,11 @@
 :where(sup) {
   font-size: 0.5em;
 } */
+
+:where(body:has(dialog[open])) {
+  overflow: hidden;
+}
+
+body {
+  color: var(--gray-8);
+}
