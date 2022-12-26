@@ -38,6 +38,10 @@
   padding: var(--size-2);
 }
 
+.p-3 {
+  padding: var(--size-3);
+}
+
 .pl-3 {
   padding-left: var(--size-3);
 }
@@ -60,4 +64,11 @@
 
 .stripped > *:nth-child(2n) {
   background-color: var(--gray-1);
+}
+
+.sticky {
+  --top: 8px;
+  position: sticky;
+  top: var(--top);
+  background-color: var(--surface-1);
 }

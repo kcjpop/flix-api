@@ -1,0 +1,39 @@
+---
+const { items, name } = Astro.props
+---
+
+<style>
+  .header {
+    font-weight: 700;
+    font-size: var(--size-3);
+    position: sticky;
+    top: 0;
+    padding: var(--size-2);
+    background-color: #fff;
+  }
+
+  .shortcut {
+    text-decoration: none;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 0.85rem;
+    padding-left: var(--size-3);
+    padding-right: var(--size-3);
+  }
+</style>
+
+{
+  items?.length && (
+    <div>
+      <h4 class="header mb-2">{name}</h4>
+      <div class="grid gap-2">
+        {items?.map((item) => (
+          <a class="shortcut" href={item.link}>
+            {item.name}
+          </a>
+        ))}
+      </div>
+    </div>
+  )
+}

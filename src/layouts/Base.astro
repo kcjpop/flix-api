@@ -3,7 +3,7 @@ import 'open-props'
 
 import '../normalize.css'
 import '../utils.css'
-import '../theme.css'
+import '../main.css'
 
 import CmdK from '../components/CmdK.astro'
 ---
@@ -16,13 +16,17 @@ import CmdK from '../components/CmdK.astro'
     <meta name="generator" content={Astro.generator} />
     <title>api.flix.dev</title>
   </head>
-  <body style="padding: 16px;">
-    <header>
-      <a href="/">Home</a>
-    </header>
+  <body>
+    <div class="grid gap-3 main">
+      <slot name="left" />
+
+      <main>
+        <slot />
+      </main>
+
+      <slot name="right" />
+    </div>
 
     <CmdK />
-
-    <slot />
   </body>
 </html>

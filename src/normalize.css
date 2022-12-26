@@ -161,7 +161,7 @@
 }
 
 :where(:not(pre) > code) {
-  padding: var(--size-1) var(--size-2);
+  padding: var(--size-1);
   border-radius: var(--radius-2);
 }
 
@@ -296,8 +296,4 @@
 
 :where(body:has(dialog[open])) {
   overflow: hidden;
-}
-
-body {
-  color: var(--gray-8);
 }

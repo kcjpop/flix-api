@@ -6,11 +6,42 @@ body {
     Fira Mono, ui-monospace, SF Mono, Monaco, Droid Sans Mono, Source Code Pro,
     monospace;
 
+  --aside-width: 15svw;
+  --main-content-height: 99vh;
+
+  --surface-1: #fff;
+
+  /* Tokens */
   --t-name: #b12250;
   --t-type: #3061c4;
   --t-kind: #8a8a8a;
   --t-keyword: #333;
   --t-effect: #d4671e;
+}
+
+/* Inline code */
+:where(:not(pre) > code) {
+  color: var(--red-7);
+}
+
+body {
+  color: var(--gray-8);
+}
+
+.main {
+  grid-template-columns: var(--aside-width) 1fr var(--aside-width);
+}
+
+.main main {
+  height: var(--main-content-height);
+  overflow: auto;
+}
+
+.aside {
+  height: var(--main-content-height);
+  overflow: auto;
+  position: sticky;
+  top: 8px;
 }
 
 .t-keyword {
@@ -31,8 +62,4 @@ body {
 
 .t-effect {
   color: var(--t-effect);
-}
-
-:where(:not(pre) > code) {
-  color: var(--red-7);
 }

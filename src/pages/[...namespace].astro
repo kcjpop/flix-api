@@ -11,6 +11,7 @@ import Instance from '../components/Instance.astro'
 import Source from '../components/Source.astro'
 import Card from '../components/Card.astro'
 import DefDetails from '../components/DefDetails.astro'
+import AsideLinks from '../components/AsideLinks.astro'
 
 export function getStaticPaths() {
   return getNamespaces().map((ns) => {
@@ -20,10 +21,40 @@ export function getStaticPaths() {
 
 const { namespace } = Astro.params
 const ns = getNamespace(namespace)
+
+const classes = ns.classes?.map((c) => ({
+  link: `#c-${c.sym.name}`,
+  name: c.sym.name,
+}))
+
+const definitions = ns.defs?.map((d) => ({
+  link: `#d-${d.sym.name}`,
+  name: d.sym.name,
+}))
+
+const namespaces = getNamespaces().map((ns) => ({
+  link: `/${ns}`,
+  name: ns,
+}))
 ---
 
 <BaseLayout>
-  <h1 class="mb-5">{namespace}</h1>
+  <aside slot="left">
+    <div class="aside">
+      <AsideLinks name="Namespaces" items={namespaces} />
+    </div>
+  </aside>
+
+  <aside slot="right">
+    <div class="aside">
+      <AsideLinks name="Classes" items={classes} />
+      <AsideLinks name="Definitions" items={definitions} />
+    </div>
+  </aside>
+
+  <div class="sticky" style="--top: 0">
+    <h1 class="mb-5">{namespace}</h1>
+  </div>
 
   <div class="grid gap-3 mb-3">
     <h3>Classes</h3>
