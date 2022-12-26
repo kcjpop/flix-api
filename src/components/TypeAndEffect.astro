@@ -1,0 +1,16 @@
+---
+const { sig } = Astro.props
+
+const eff = sig.eff === 'false' ? 'Impure' : sig.eff === 'true' ? null : sig.eff
+---
+
+<span>
+  : <span class="t-type">{sig.tpe}</span>
+  {
+    eff && (
+      <>
+        & <span class="t-effect">{eff}</span>
+      </>
+    )
+  }
+</span>

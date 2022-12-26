@@ -1,0 +1,44 @@
+---
+import TypeParam from './TypeParam.astro'
+import FormalParam from './FormalParam.astro'
+import TypeAndEffect from './TypeAndEffect.astro'
+import TypeConstraints from './TypeConstraints.astro'
+
+const { sig } = Astro.props
+---
+
+<p>
+  <span class="t-keyword">def</span>
+  <span class="t-name">{sig.sym.name}</span>
+  {
+    sig.tparams?.length > 0 && (
+      <>
+        [
+        <span class="sep">
+          {sig.tparams.map((tparam) => (
+            <TypeParam tparam={tparam} />
+          ))}
+        </span>
+        ]
+      </>
+    )
+  }
+
+  {
+    sig.fparams?.length > 0 && sig.fparams?.[0]?.tpe !== 'Unit' && (
+      <>
+        (
+        <span class="sep">
+          {sig.fparams.map((fparam) => (
+            <FormalParam fparam={fparam} />
+          ))}
+        </span>
+        )
+      </>
+    )
+  }
+
+  <TypeAndEffect sig={sig} />
+
+  <TypeConstraints tcs={sig.tcs} />
+</p>

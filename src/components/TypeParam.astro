@@ -1,12 +1,12 @@
 ---
-const { tparam } = Astro.props
+const { tparam, withKind = false } = Astro.props
 ---
 
-<span class="t-type">{tparam.name}</span>
-{
-  tparam.withKind === false ? null : (
+<span class="t-type">{tparam.name}</span>{
+  withKind && (
     <>
-      <span> : </span> <span class="t-kind">{tparam.kind}</span>
+      <span> : </span>
+      <span class="t-kind">{tparam.kind}</span>
     </>
   )
 }

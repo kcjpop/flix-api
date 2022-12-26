@@ -1,7 +1,20 @@
-:root {
+body {
+  /* Default separator character used in type parameters, formal parameters, etc. */
+  --sep: ', ';
+
+  --font-mono: 'Spline Sans Mono', Dank Mono, Operator Mono, Inconsolata,
+    Fira Mono, ui-monospace, SF Mono, Monaco, Droid Sans Mono, Source Code Pro,
+    monospace;
+
   --t-name: #b12250;
   --t-type: #3061c4;
   --t-kind: #8a8a8a;
+  --t-keyword: #333;
+  --t-effect: #d4671e;
+}
+
+.t-keyword {
+  color: var(--t-keyword);
 }
 
 .t-name {
@@ -16,6 +29,10 @@
   color: var(--t-kind);
 }
 
-.t-typeconstraint-name {
-  text-decoration: underline;
+.t-effect {
+  color: var(--t-effect);
+}
+
+:where(:not(pre) > code) {
+  color: var(--red-7);
 }

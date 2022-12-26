@@ -1,12 +1,16 @@
 ---
 import { getVersion, getNamespaces, getNamespace } from '../data.js'
 
+import s from './namespace.module.css'
+
 import BaseLayout from '../layouts/Base.astro'
 import Doc from '../components/Doc.astro'
 import TypeParam from '../components/TypeParam.astro'
 import TypeConstraints from '../components/TypeConstraints.astro'
+import Signature from '../components/Signature.astro'
 import Source from '../components/Source.astro'
 import Card from '../components/Card.astro'
+import DefDetails from '../components/DefDetails.astro'
 
 export function getStaticPaths() {
   return getNamespaces().map((ns) => {
@@ -19,10 +23,9 @@ const ns = getNamespace(namespace)
 ---
 
 <BaseLayout>
-  <h1>{namespace}</h1>
-  <p>{getVersion()}</p>
+  <h1 class="mb-5">{namespace}</h1>
 
-  <div>
+  <div class="grid gap-3 mb-3">
     <h3>Classes</h3>
 
     <div class="grid gap-3">
@@ -30,21 +33,37 @@ const ns = getNamespace(namespace)
         ns.classes?.map((c) => (
           <Card id={`c-${c.sym.name}`}>
             <div class="font-mono flex align-center justify-space-between">
-              <p>
+              <div>
                 class <span class="t-name">{c.sym.name}</span>
-                [<TypeParam tparam={c.tparam} />]
-                <TypeConstraints superclasses={c.superClasses} />
-              </p>
+                [<TypeParam tparam={c.tparam} withKind />]
+                <TypeConstraints tcs={c.superClasses} />
+              </div>
               <Source loc={c.loc} />
             </div>
-            <Doc doc={c.doc} />
+
+            <div class="pl-3 mb-3">
+              <Doc doc={c.doc} />
+            </div>
+
+            <DefDetails
+              open
+              summary="Signatures"
+              classList={s.details}
+              defs={c.sigs}
+            />
+
+            <DefDetails
+              summary="Definitions"
+              classList={s.details}
+              defs={c.defs}
+            />
           </Card>
         ))
       }
     </div>
   </div>
 
-  <div>
+  <div class="grid gap-3 mb-3">
     <h3>Definitions</h3>
 
     <div class="grid gap-3">
