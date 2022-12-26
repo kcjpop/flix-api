@@ -34,6 +34,10 @@
   gap: var(--size-3);
 }
 
+.p-2 {
+  padding: var(--size-2);
+}
+
 .pl-3 {
   padding-left: var(--size-3);
 }
@@ -52,4 +56,8 @@
 
 .sep > *:not(:last-child)::after {
   content: var(--sep);
+}
+
+.stripped > *:nth-child(2n) {
+  background-color: var(--gray-1);
 }

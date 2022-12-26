@@ -61,9 +61,9 @@ const ns = getNamespace(namespace)
             <details class={s.details}>
               <summary class="mb-3">Instances</summary>
 
-              <div class="grid gap-2">
+              <div class="grid gap-2 stripped">
                 {c.instances.map((inst) => (
-                  <div class="font-mono flex gap-2 align-center justify-space-between">
+                  <div class="font-mono flex gap-2 align-center justify-space-between p-2">
                     <Instance inst={inst} />
                     <Source loc={inst.loc} />
                   </div>

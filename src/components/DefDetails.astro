@@ -11,9 +11,9 @@ const { defs, classList, summary, open = false } = Astro.props
     <details class:list={classList} open={open}>
       <summary class="mb-3">{summary}</summary>
 
-      <div class="grid gap-2">
+      <div class="grid gap-2 stripped">
         {defs.map((sig) => (
-          <>
+          <div class="p-2">
             <div class="font-mono flex gap-2 align-center justify-space-between">
               <Signature sig={sig} />
               <Source loc={sig.loc} />
@@ -21,7 +21,7 @@ const { defs, classList, summary, open = false } = Astro.props
             <div class="pl-3">
               <Doc doc={sig.doc} />
             </div>
-          </>
+          </div>
         ))}
       </div>
     </details>
