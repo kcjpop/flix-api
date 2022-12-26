@@ -2,6 +2,6 @@
 import s from './Card.module.css'
 ---
 
-<section class={s.wrapper} id={Astro.props.id}>
+<section class:list={['grid', s.wrapper]} id={Astro.props.id}>
   <slot />
 </section>

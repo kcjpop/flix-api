@@ -21,7 +21,7 @@ const ns = getNamespace(namespace)
   <p>{getVersion()}</p>
 
   <div>
-    <h2>Classes</h2>
+    <h3>Classes</h3>
 
     <div class="grid gap-3">
       {
@@ -38,7 +38,7 @@ const ns = getNamespace(namespace)
   </div>
 
   <div>
-    <h2>Definitions</h2>
+    <h3>Definitions</h3>
 
     <div class="grid gap-3">
       {
@@ -52,4 +52,8 @@ const ns = getNamespace(namespace)
       }
     </div>
   </div>
+
+  <datalist id="js-current-ns-defs">
+    {ns.defs?.map((d) => <option value={d.sym.name} />)}
+  </datalist>
 </BaseLayout>

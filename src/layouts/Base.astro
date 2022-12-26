@@ -2,6 +2,8 @@
 import 'open-props'
 import 'open-props/normalize.min.css'
 import '../utils.css'
+
+import CmdK from '../components/CmdK.astro'
 ---
 
 <html lang="en">
@@ -16,6 +18,9 @@ import '../utils.css'
     <header>
       <a href="/">Home</a>
     </header>
+
+    <CmdK />
+
     <slot />
   </body>
 </html>

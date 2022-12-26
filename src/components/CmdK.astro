@@ -1,0 +1,61 @@
+---
+import s from './CmdK.module.css'
+---
+
+<style is:global>
+  ::backdrop {
+    background-color: #333;
+    opacity: 0.8;
+  }
+</style>
+
+<dialog
+  id="js-cmdk"
+  class={s.dialog}
+  aria-label="Jump to definitions"
+  aria-describedby="Quickly jump to a class, definition in the current namespace, or jump to another namespace"
+>
+  <form method="dialog" class="grid gap-3">
+    <input
+      id="js-cmdk-keyword"
+      type="search"
+      name="keyword"
+      placeholder="Jump to definition, or a namespace"
+      list="js-current-ns-defs"
+    />
+
+    <div class="grid gap-2">
+      <div class={s.option}>Classes</div>
+      <div class={s.option}>Type Aliases</div>
+      <div class={s.option}>Definitions</div>
+    </div>
+
+    <div class="flex justify-space-between">
+      <button class={s.btn} value="default">Jump</button>
+      <button class={s.btn} value="cancel">Close</button>
+    </div>
+  </form>
+</dialog>
+
+<script>
+  const on = (el, ev, fn) => el.addEventListener(ev, fn)
+
+  const d = document.getElementById('js-cmdk') as HTMLDialogElement
+  const s = document.getElementById('js-cmdk-keyword') as HTMLInputElement
+
+  on(s, 'change', (e) => {
+    const def = e.currentTarget.value
+
+    window.location.assign(`#d-${def}`)
+  })
+
+  on(d, 'close', (e) => console.log(e.currentTarget.returnValue))
+
+  on(document, 'keypress', (e) => {
+    if (e.key === 'k') {
+      // Reset keyword before showing Cmd K
+      s.value = ''
+      d.showModal()
+    }
+  })
+</script>
