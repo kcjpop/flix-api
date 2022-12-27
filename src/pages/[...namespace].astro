@@ -1,5 +1,5 @@
 ---
-import { getNamespace, getNamespaces } from '../data.js'
+import { getVersion, getNamespace, getNamespaces } from '../data.js'
 
 import s from './namespace.module.css'
 
@@ -95,9 +95,12 @@ const namespaces = getNamespaces().map((ns) => ({ link: `/${ns}`, name: ns }))
       </a>
     </div>
 
-    <h1 class="font-mono font-fluid-3">
-      {namespace}
-    </h1>
+    <div class="flex align-center justify-space-between">
+      <h1 class="font-mono font-fluid-3">
+        {namespace}
+      </h1>
+      <div class={s.version}>{getVersion()}</div>
+    </div>
   </div>
 
   {
