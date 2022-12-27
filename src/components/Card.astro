@@ -5,6 +5,11 @@
     border: 1px solid var(--gray-2);
     gap: var(--size-2);
   }
+
+  .wrapper:target {
+    background-color: var(--yellow-1);
+    border-color: var(--yellow-7);
+  }
 </style>
 
 <section class="grid gap-3 wrapper" id={Astro.props.id}>
