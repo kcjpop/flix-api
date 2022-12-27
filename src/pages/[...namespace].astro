@@ -31,6 +31,7 @@ const linkMapper = (prefix) => (item) => ({
 const classes = ns.classes?.map(linkMapper('c'))
 const enums = ns.enums?.map(linkMapper('e'))
 const definitions = ns.defs?.map(linkMapper('d'))
+const typeAliases = ns.typeAliases?.map(linkMapper('ta'))
 
 const namespaces = getNamespaces().map((ns) => ({ link: `/${ns}`, name: ns }))
 ---
@@ -54,6 +55,7 @@ const namespaces = getNamespaces().map((ns) => ({ link: `/${ns}`, name: ns }))
 
       <AsideLinks type="class" name="Classes" items={classes} />
       <AsideLinks type="enum" name="Enums" items={enums} />
+      <AsideLinks type="type-alias" name="Type Aliases" items={typeAliases} />
       <AsideLinks type="def" name="Definitions" items={definitions} />
     </div>
   </aside>
