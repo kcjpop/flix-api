@@ -1,12 +1,7 @@
 @custom-media --large (min-width: 80em);
 @custom-media --small (max-width: 80em);
 
-html {
-  /* Height of header, including the namespace name and 2 buttons. Quite arbitrary. */
-  scroll-padding-top: 140px;
-}
-
-body {
+:root {
   /* Default separator character used in type parameters, formal parameters, etc. */
   --sep: ', ';
 
@@ -24,6 +19,10 @@ body {
 
   --z-index-aside: 1000;
 
+  /* Height of header, including the namespace name and 2 buttons. Quite arbitrary. */
+  --mobile-scroll-padding-top: 160px;
+  --desktop-scroll-padding-top: 120px;
+
   /* Tokens */
   --t-name: #b12250;
   --t-type: #3061c4;
@@ -40,6 +39,10 @@ body {
 /* Inline code */
 :where(:not(pre) > code) {
   color: var(--red-7);
+}
+
+html {
+  scroll-padding-top: var(--mobile-scroll-padding-top);
 }
 
 body {
@@ -60,7 +63,7 @@ body {
   align-content: flex-start;
 
   @media (--large) {
-    scroll-padding-top: 110px;
+    scroll-padding-top: var(--desktop-scroll-padding-top);
     height: var(--main-content-height);
     overflow: auto;
   }

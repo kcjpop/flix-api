@@ -8,6 +8,9 @@
   background-color: var(--gray-1);
   color: var(--gray-9);
   border-radius: var(--radius-1);
+  display: inline-flex;
+  gap: 1ch;
+  text-decoration: none;
 
   @media (--large) {
     display: none;
