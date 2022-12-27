@@ -2,3 +2,9 @@
   font-weight: 700;
   user-select: none;
 }
+
+.btnAside {
+  @media (--large) {
+    display: none;
+  }
+}

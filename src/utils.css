@@ -72,3 +72,7 @@
   top: var(--top);
   background-color: var(--surface-1);
 }
+
+.overflow-hidden {
+  overflow: hidden;
+}

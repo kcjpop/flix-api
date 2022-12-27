@@ -1,4 +1,5 @@
 @custom-media --large (min-width: 80em);
+@custom-media --small (max-width: 80em);
 
 body {
   /* Default separator character used in type parameters, formal parameters, etc. */
@@ -8,10 +9,12 @@ body {
     Fira Mono, ui-monospace, SF Mono, Monaco, Droid Sans Mono, Source Code Pro,
     monospace;
 
-  --aside-width: 15svw;
+  --aside-width: 30svw;
   --main-content-height: 100vh;
 
   --surface-1: #fff;
+
+  --z-index-aside: 1;
 
   /* Tokens */
   --t-name: #b12250;
@@ -19,6 +22,10 @@ body {
   --t-kind: #8a8a8a;
   --t-keyword: #333;
   --t-effect: #d4671e;
+
+  @media (--large) {
+    --aside-width: 15svw;
+  }
 }
 
 /* Inline code */
@@ -28,6 +35,7 @@ body {
 
 body {
   color: var(--gray-8);
+  font-family: var(--font-sans);
 }
 
 .app {
@@ -57,6 +65,52 @@ body {
     position: sticky;
     top: var(--size-1);
   }
+}
+
+@media (--small) {
+  .aside--left:target {
+    left: 0;
+  }
+
+  .aside--right:target {
+    right: 0;
+  }
+
+  .aside:target {
+    display: block;
+    position: fixed;
+    width: var(--aside-width);
+    top: 0;
+    background-color: var(--surface-1);
+    z-index: var(--z-index-aside);
+    box-shadow: var(--shadow-4);
+    border-left: 1px solid var(--gray-2);
+    height: var(--main-content-height);
+    overflow: auto;
+  }
+}
+
+.aside-btn-close {
+  @media (--large) {
+    display: none;
+  }
+
+  &::before {
+    content: '';
+    background: #000;
+    opacity: 0.5;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+  }
+}
+.aside-btn-close--left::before {
+  left: var(--aside-width);
+}
+
+.aside-btn-close--right::before {
+  right: var(--aside-width);
 }
 
 .t-keyword {

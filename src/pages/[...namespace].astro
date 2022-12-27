@@ -40,20 +40,28 @@ const namespaces = getNamespaces().map((ns) => ({
 
 <BaseLayout>
   <aside slot="left">
-    <div class="aside">
+    <div class="aside aside--left" id="aside-left">
+      <a class="aside-btn-close aside-btn-close--left" href="#">Close</a>
+
       <AsideLinks name="Namespaces" items={namespaces} />
     </div>
   </aside>
 
   <aside slot="right">
-    <div class="aside">
+    <div class="aside aside--right" id="aside-right">
+      <a class="aside-btn-close aside-btn-close--right" href="#">Close</a>
+
       <AsideLinks name="Classes" items={classes} />
       <AsideLinks name="Definitions" items={definitions} />
     </div>
   </aside>
 
   <div class="sticky" style="--top: 0">
+    <a class={s.btnAside} href="#aside-left">ns</a>
+
     <h1 class="mb-5">{namespace}</h1>
+
+    <a class={s.btnAside} href="#aside-right">right</a>
   </div>
 
   <div class="grid gap-3 mb-3">
@@ -114,7 +122,9 @@ const namespaces = getNamespaces().map((ns) => ({
       {
         ns.defs?.map((d) => (
           <Card id={`d-${d.sym.name}`}>
-            <p class="font-mono">def {d.sym.name}</p>
+            <p class="font-mono">
+              def <span class="t-name">{d.sym.name}</span>
+            </p>
 
             <Doc doc={d.doc} />
           </Card>
@@ -126,4 +136,18 @@ const namespaces = getNamespaces().map((ns) => ({
   <datalist id="js-current-ns-defs">
     {ns.defs?.map((d) => <option value={d.sym.name} />)}
   </datalist>
+
+  <script>
+    function toggleOverflowHidden() {
+      if (location.hash === '#aside-left' || location.hash === '#aside-right') {
+        // Aside is visible, hide overflow on body
+        document.body.classList.add('overflow-hidden')
+      } else {
+        document.body.classList.remove('overflow-hidden')
+      }
+    }
+
+    window.addEventListener('load', toggleOverflowHidden)
+    window.addEventListener('hashchange', toggleOverflowHidden)
+  </script>
 </BaseLayout>

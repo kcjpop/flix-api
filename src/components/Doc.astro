@@ -4,4 +4,12 @@ import Markdown from './Markdown.astro'
 const doc = Astro.props.doc.join('\n')
 ---
 
-<Markdown doc={doc} />
+<style>
+  .doc {
+    color: var(--gray-7);
+  }
+</style>
+
+<div class="doc">
+  <Markdown doc={doc} />
+</div>
