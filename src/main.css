@@ -15,7 +15,7 @@ body {
     monospace;
 
   /* This is for mobile */
-  --aside-width: 50vw;
+  --aside-width: 70vw;
 
   /* Need to use svh here or the address bar on mobile will cover the sidebar */
   --main-content-height: 100svh;
