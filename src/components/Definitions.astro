@@ -16,7 +16,9 @@ const { defs } = Astro.props
       <Card id={`d-${sig.sym.name}`}>
         <div class="grid gap-3">
           <SourceGrid>
-            <Signature sig={sig} />
+            <div class="font-semibold">
+              <Signature sig={sig} />
+            </div>
             <Source loc={sig.loc} />
           </SourceGrid>
           <div class="pl-3">

@@ -1,6 +1,5 @@
 ---
 import { getNamespaces } from '../data'
-import s from './CmdK.module.css'
 ---
 
 <style is:global>
@@ -10,30 +9,43 @@ import s from './CmdK.module.css'
   }
 </style>
 
+<style>
+  .dialog {
+    width: clamp(30svw, var(--size-7), 90svw);
+    padding: var(--size-3);
+  }
+
+  .btn {
+    padding: var(--size-2) var(--size-3);
+    border-radius: var(--radius-2);
+    font-weight: 600;
+  }
+
+  .btn-default {
+    background-color: var(--blue-2);
+    color: var(--blue-8);
+  }
+</style>
+
 <dialog
   id="js-cmdk"
-  class={s.dialog}
+  class="dialog"
   aria-label="Jump to definitions"
-  aria-describedby="Quickly jump to a class, definition in the current namespace, or jump to another namespace"
+  aria-describedby="Quickly jump to another namespace"
 >
   <form method="dialog" class="grid gap-3">
     <input
       id="js-cmdk-keyword"
       type="search"
       name="keyword"
-      placeholder="Jump to definition, or a namespace"
+      placeholder="Type a namespace and press Enter to jump"
       list="js-current-ns-defs"
+      class="input"
     />
 
-    <div class="grid gap-2">
-      <div class={s.option}>Classes</div>
-      <div class={s.option}>Type Aliases</div>
-      <div class={s.option}>Definitions</div>
-    </div>
-
-    <div class="flex justify-space-between">
-      <button class={s.btn} value="default">Jump</button>
-      <button class={s.btn} value="cancel">Close</button>
+    <div class="flex gap-2 align-center justify-space-between">
+      <button class="btn btn-default" value="default">Jump</button>
+      <button class="btn" value="cancel">Cancel</button>
     </div>
   </form>
 </dialog>
@@ -48,13 +60,30 @@ import s from './CmdK.module.css'
   const d = document.getElementById('js-cmdk') as HTMLDialogElement
   const s = document.getElementById('js-cmdk-keyword') as HTMLInputElement
 
-  on(s, 'change', (e) => {
-    const ns = e.currentTarget.value
+  const validNamespaces = Array.from(
+    document.getElementById('js-current-ns-defs').querySelectorAll('option'),
+  ).map((node) => node.value.trim())
 
-    window.location.assign('/' + ns)
+  on(d, 'close', (e) => {
+    if (e.currentTarget.returnValue === 'cancel') return
+
+    const form = e.currentTarget.querySelector('form')
+    const keyword = form.elements.keyword.value
+    const regex = new RegExp(keyword, 'gi')
+
+    // Find exact ns first
+    const exact = validNamespaces.find(
+      (ns) => ns.toLowerCase() === keyword.toLowerCase(),
+    )
+
+    if (exact) return window.location.assign('/' + exact)
+
+    // If not, find similar ns
+    const valid = validNamespaces.find((ns) => regex.test(ns))
+
+    if (!valid) alert('Cannot find namespace: ' + keyword)
+    else window.location.assign('/' + valid)
   })
-
-  on(d, 'close', (e) => console.log(e.currentTarget.returnValue))
 
   on(document, 'keypress', (e) => {
     if (e.key === 'k') {
