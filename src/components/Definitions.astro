@@ -1,0 +1,22 @@
+---
+import Card from './Card.astro'
+import Doc from './Doc.astro'
+
+const { defs } = Astro.props
+---
+
+<h3>Definitions</h3>
+
+<div class="grid gap-3">
+  {
+    defs.map((d) => (
+      <Card id={`d-${d.sym.name}`}>
+        <p class="font-mono">
+          def <span class="t-name">{d.sym.name}</span>
+        </p>
+
+        <Doc doc={d.doc} />
+      </Card>
+    ))
+  }
+</div>

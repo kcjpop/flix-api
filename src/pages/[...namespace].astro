@@ -1,22 +1,16 @@
 ---
-import { getNamespaces, getNamespace } from '../data.js'
+import { getNamespace, getNamespaces } from '../data.js'
 
 import s from './namespace.module.css'
 
-import BaseLayout from '../layouts/Base.astro'
-import Doc from '../components/Doc.astro'
-import TypeParam from '../components/TypeParam.astro'
-import TypeConstraints from '../components/TypeConstraints.astro'
-import Instance from '../components/Instance.astro'
-import Source from '../components/Source.astro'
-import Card from '../components/Card.astro'
-import DefDetails from '../components/DefDetails.astro'
 import AsideLinks from '../components/AsideLinks.astro'
-import SourceGrid from '../components/SourceGrid.astro'
+import Classes from '../components/Classes.astro'
+import Definitions from '../components/Definitions.astro'
+import BaseLayout from '../layouts/Base.astro'
 
-import IconClose from '../components/IconClose.astro'
 import IconArrowFromLeft from '../components/IconArrowFromLeft.astro'
 import IconArrowFromRight from '../components/IconArrowFromRight.astro'
+import IconClose from '../components/IconClose.astro'
 
 export function getStaticPaths() {
   return getNamespaces().map((ns) => {
@@ -82,79 +76,21 @@ const namespaces = getNamespaces().map((ns) => ({
     <h1>{namespace}</h1>
   </div>
 
-  <div class="px-3 grid gap-3 mb-3">
-    <h3>Classes</h3>
+  {
+    ns.classes?.length > 0 && (
+      <div class="px-3 grid gap-3 mb-3">
+        <Classes classes={ns.classes} s={s} />
+      </div>
+    )
+  }
 
-    <div class="grid gap-3">
-      {
-        ns.classes?.map((c) => (
-          <Card id={`c-${c.sym.name}`}>
-            <SourceGrid>
-              <div>
-                class <span class="t-name">{c.sym.name}</span>
-                [<TypeParam tparam={c.tparam} withKind />]
-                <TypeConstraints tcs={c.superClasses} />
-              </div>
-
-              <Source loc={c.loc} />
-            </SourceGrid>
-
-            <div class="pl-3 mb-3">
-              <Doc doc={c.doc} />
-            </div>
-
-            <DefDetails
-              open
-              summary="Signatures"
-              classList={s.details}
-              defs={c.sigs}
-            />
-
-            <DefDetails
-              summary="Definitions"
-              classList={s.details}
-              defs={c.defs}
-            />
-
-            <details class={s.details}>
-              <summary class="mb-3">Instances</summary>
-
-              <div class="grid gap-2 stripped">
-                {c.instances.map((inst) => (
-                  <SourceGrid>
-                    <Instance inst={inst} />
-                    <Source loc={inst.loc} />
-                  </SourceGrid>
-                ))}
-              </div>
-            </details>
-          </Card>
-        ))
-      }
-    </div>
-  </div>
-
-  <div class="px-3 grid gap-3 mb-3">
-    <h3>Definitions</h3>
-
-    <div class="grid gap-3">
-      {
-        ns.defs?.map((d) => (
-          <Card id={`d-${d.sym.name}`}>
-            <p class="font-mono">
-              def <span class="t-name">{d.sym.name}</span>
-            </p>
-
-            <Doc doc={d.doc} />
-          </Card>
-        ))
-      }
-    </div>
-  </div>
-
-  <datalist id="js-current-ns-defs">
-    {ns.defs?.map((d) => <option value={d.sym.name} />)}
-  </datalist>
+  {
+    ns.defs?.length > 0 && (
+      <div class="px-3 grid gap-3 mb-3">
+        <Definitions defs={ns.defs} />
+      </div>
+    )
+  }
 
   <script>
     function toggleOverflowHidden() {

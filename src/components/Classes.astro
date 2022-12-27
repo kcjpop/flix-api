@@ -1,0 +1,58 @@
+---
+import Card from './Card.astro'
+import DefDetails from './DefDetails.astro'
+import Doc from './Doc.astro'
+import Instance from './Instance.astro'
+import Source from './Source.astro'
+import SourceGrid from './SourceGrid.astro'
+import TypeConstraints from './TypeConstraints.astro'
+import TypeParam from './TypeParam.astro'
+
+const { classes = [], s } = Astro.props
+---
+
+<h3>Classes</h3>
+
+<div class="grid gap-3">
+  {
+    classes.map((c) => (
+      <Card id={`c-${c.sym.name}`}>
+        <SourceGrid>
+          <div class="font-semibold">
+            class <span class="t-name">{c.sym.name}</span>
+            [<TypeParam tparam={c.tparam} withKind />]
+            <TypeConstraints tcs={c.superClasses} />
+          </div>
+
+          <Source loc={c.loc} />
+        </SourceGrid>
+
+        <div class="pl-3 mb-3">
+          <Doc doc={c.doc} />
+        </div>
+
+        <DefDetails
+          open
+          summary="Signatures"
+          classList={s.details}
+          defs={c.sigs}
+        />
+
+        <DefDetails summary="Definitions" classList={s.details} defs={c.defs} />
+
+        <details class={s.details}>
+          <summary class="mb-3">Instances</summary>
+
+          <div class="grid gap-2 stripped">
+            {c.instances.map((inst) => (
+              <SourceGrid>
+                <Instance inst={inst} />
+                <Source loc={inst.loc} />
+              </SourceGrid>
+            ))}
+          </div>
+        </details>
+      </Card>
+    ))
+  }
+</div>

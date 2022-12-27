@@ -2,6 +2,14 @@
   font-family: var(--font-mono);
 }
 
+.font-semibold {
+  font-weight: 600;
+}
+
+.font-bold {
+  font-weight: 700;
+}
+
 .italic {
   font-style: italic;
 }

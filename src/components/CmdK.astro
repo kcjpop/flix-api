@@ -1,4 +1,5 @@
 ---
+import { getNamespaces } from '../data'
 import s from './CmdK.module.css'
 ---
 
@@ -37,6 +38,10 @@ import s from './CmdK.module.css'
   </form>
 </dialog>
 
+<datalist id="js-current-ns-defs">
+  {getNamespaces().map((ns) => <option value={ns} />)}
+</datalist>
+
 <script>
   const on = (el, ev, fn) => el.addEventListener(ev, fn)
 
@@ -44,9 +49,9 @@ import s from './CmdK.module.css'
   const s = document.getElementById('js-cmdk-keyword') as HTMLInputElement
 
   on(s, 'change', (e) => {
-    const def = e.currentTarget.value
+    const ns = e.currentTarget.value
 
-    window.location.assign(`#d-${def}`)
+    window.location.assign('/' + ns)
   })
 
   on(d, 'close', (e) => console.log(e.currentTarget.returnValue))
