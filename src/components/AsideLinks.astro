@@ -1,5 +1,5 @@
 ---
-const { items, name } = Astro.props
+const { items, name, type } = Astro.props
 ---
 
 <style>
@@ -18,8 +18,35 @@ const { items, name } = Astro.props
     overflow: hidden;
     text-overflow: ellipsis;
     font-size: 0.85rem;
-    padding-left: var(--size-3);
-    padding-right: var(--size-3);
+    padding-left: 1ch;
+  }
+
+  .menu {
+    list-style-type: none;
+    padding: 0 0 0 var(--size-3);
+    margin: 0;
+  }
+
+  .menu li {
+    display: inline-flex;
+    align-items: center;
+    color: var(--type);
+  }
+
+  .item-class {
+    --type: #fc9d9a;
+  }
+
+  .item-enum {
+    --type: #c8c8a9;
+  }
+
+  .item-type-alias {
+    --type: #f9cdad;
+  }
+
+  .item-def {
+    --type: #83af9b;
   }
 </style>
 
@@ -28,13 +55,30 @@ const { items, name } = Astro.props
     <div>
       <h4 class="header mb-2">{name}</h4>
 
-      <div class="grid gap-2">
+      <menu class="menu grid gap-2">
         {items?.map((item) => (
-          <a class="shortcut" href={item.link}>
-            {item.name}
-          </a>
+          <li class={`item-${type}`}>
+            {type != null && (
+              <svg
+                width="0.7em"
+                height="0.7em"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 512 512"
+              >
+                <path
+                  fill="currentColor"
+                  d="M0 256C0 114.6 114.6 0 256 0s256 114.6 256 256-114.6 256-256 256S0 397.4 0 256zm256 96c53 0 96-43 96-96 0-53.9-43-96-96-96-53.9 0-96 42.1-96 96 0 53 42.1 96 96 96z"
+                />
+              </svg>
+            )}
+
+            <a class="shortcut" href={item.link}>
+              {item.name}
+            </a>
+          </li>
         ))}
-      </div>
+      </menu>
     </div>
   )
 }
