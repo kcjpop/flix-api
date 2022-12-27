@@ -2,6 +2,7 @@
 @custom-media --small (max-width: 80em);
 
 html {
+  /* Height of header, including the namespace name and 2 buttons. Quite arbitrary. */
   scroll-padding-top: 140px;
 }
 
