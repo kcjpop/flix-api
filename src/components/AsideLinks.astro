@@ -1,4 +1,6 @@
 ---
+import IconDotCircle from './IconDotCircle.astro'
+
 const { items, name, type } = Astro.props
 ---
 
@@ -58,20 +60,7 @@ const { items, name, type } = Astro.props
       <menu class="menu grid gap-2">
         {items?.map((item) => (
           <li class={`item-${type}`}>
-            {type != null && (
-              <svg
-                width="0.7em"
-                height="0.7em"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 512 512"
-              >
-                <path
-                  fill="currentColor"
-                  d="M0 256C0 114.6 114.6 0 256 0s256 114.6 256 256-114.6 256-256 256S0 397.4 0 256zm256 96c53 0 96-43 96-96 0-53.9-43-96-96-96-53.9 0-96 42.1-96 96 0 53 42.1 96 96 96z"
-                />
-              </svg>
-            )}
+            {type != null && <IconDotCircle />}
 
             <a class="shortcut" href={item.link}>
               {item.name}
