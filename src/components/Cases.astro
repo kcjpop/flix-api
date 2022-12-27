@@ -1,0 +1,21 @@
+---
+const getType = (c) => {
+  if (c.tpe === 'Unit') return null
+
+  if (c.tpe.startsWith('(') && c.tpe.endsWith(')'))
+    return c.tpe.slice(1, c.tpe.length - 1)
+
+  return c.tpe
+}
+
+const cases = Astro.props.cases.map((c) => ({ ...c, tpe: getType(c) }))
+---
+
+{
+  cases.map((c) => (
+    <div>
+      <span class="t-keyword">case</span>
+      {c.tag}(<span class="t-type">{c.tpe}</span>)
+    </div>
+  ))
+}

@@ -1,0 +1,67 @@
+---
+import Card from './Card.astro'
+import Cases from './Cases.astro'
+import Doc from './Doc.astro'
+import Source from './Source.astro'
+import SourceGrid from './SourceGrid.astro'
+import TypeParam from './TypeParam.astro'
+
+const { enums = [] } = Astro.props
+---
+
+<h3>Enums</h3>
+
+<div class="grid gap-3">
+  {
+    enums.map((e) => (
+      <Card id={`e-${e.sym.name}`}>
+        <div class="grid gap-3">
+          <SourceGrid>
+            <div class="font-semibold">
+              enum <span class="t-name">{e.sym.name}</span>
+              {e.tparams?.length > 0 && (
+                <>
+                  [
+                  <span class="sep">
+                    {e.tparams.map((tparam) => (
+                      <span>
+                        <TypeParam tparam={tparam} withKind />
+                      </span>
+                    ))}
+                  </span>
+                  ]
+                </>
+              )}
+              {e.derives?.length > 0 && (
+                <>
+                  <span class="t-keyword">with</span>
+                  <span class="sep">
+                    {e.derives.map((d) => (
+                      <span>
+                        <span class="underline">{d.name}</span>
+                      </span>
+                    ))}
+                  </span>
+                </>
+              )}
+            </div>
+
+            <Source loc={e.loc} />
+          </SourceGrid>
+
+          {e.cases?.length > 0 && (
+            <div class="pl-3 font-mono">
+              <Cases cases={e.cases} />
+            </div>
+          )}
+
+          {e.doc && (
+            <div class="pl-3">
+              <Doc doc={e.doc} />
+            </div>
+          )}
+        </div>
+      </Card>
+    ))
+  }
+</div>

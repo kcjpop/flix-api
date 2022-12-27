@@ -6,6 +6,7 @@ import s from './namespace.module.css'
 import AsideLinks from '../components/AsideLinks.astro'
 import Classes from '../components/Classes.astro'
 import Definitions from '../components/Definitions.astro'
+import Enums from '../components/Enums.astro'
 import BaseLayout from '../layouts/Base.astro'
 
 import IconArrowFromLeft from '../components/IconArrowFromLeft.astro'
@@ -21,20 +22,16 @@ export function getStaticPaths() {
 const { namespace } = Astro.params
 const ns = getNamespace(namespace)
 
-const classes = ns.classes?.map((c) => ({
-  link: `#c-${c.sym.name}`,
-  name: c.sym.name,
-}))
+const linkMapper = (prefix) => (item) => ({
+  link: `#${prefix}-${item.sym.name}`,
+  name: item.sym.name,
+})
 
-const definitions = ns.defs?.map((d) => ({
-  link: `#d-${d.sym.name}`,
-  name: d.sym.name,
-}))
+const classes = ns.classes?.map(linkMapper('c'))
+const enums = ns.enums?.map(linkMapper('e'))
+const definitions = ns.defs?.map(linkMapper('d'))
 
-const namespaces = getNamespaces().map((ns) => ({
-  link: `/${ns}`,
-  name: ns,
-}))
+const namespaces = getNamespaces().map((ns) => ({ link: `/${ns}`, name: ns }))
 ---
 
 <BaseLayout>
@@ -55,6 +52,7 @@ const namespaces = getNamespaces().map((ns) => ({
       </a>
 
       <AsideLinks type="class" name="Classes" items={classes} />
+      <AsideLinks type="enum" name="Enums" items={enums} />
       <AsideLinks type="def" name="Definitions" items={definitions} />
     </div>
   </aside>
@@ -80,6 +78,14 @@ const namespaces = getNamespaces().map((ns) => ({
     ns.classes?.length > 0 && (
       <div class="px-3 grid gap-3 mb-3">
         <Classes classes={ns.classes} s={s} />
+      </div>
+    )
+  }
+
+  {
+    ns.enums?.length > 0 && (
+      <div class="px-3 grid gap-3 mb-3">
+        <Enums enums={ns.enums} />
       </div>
     )
   }

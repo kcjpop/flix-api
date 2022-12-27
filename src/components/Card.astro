@@ -1,7 +1,12 @@
----
-import s from './Card.module.css'
----
+<style>
+  .wrapper {
+    padding: var(--size-3);
+    box-shadow: var(--shadow-2);
+    border: 1px solid var(--gray-2);
+    gap: var(--size-2);
+  }
+</style>
 
-<section class:list={['grid gap-3', s.wrapper]} id={Astro.props.id}>
+<section class="grid gap-3 wrapper" id={Astro.props.id}>
   <slot />
 </section>

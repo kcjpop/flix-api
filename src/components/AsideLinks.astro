@@ -16,11 +16,11 @@ const { items, name, type } = Astro.props
 
   .shortcut {
     text-decoration: none;
+    font-size: 0.85rem;
+    padding-left: 1ch;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    font-size: 0.85rem;
-    padding-left: 1ch;
   }
 
   .menu {
@@ -33,6 +33,7 @@ const { items, name, type } = Astro.props
     display: inline-flex;
     align-items: center;
     color: var(--type);
+    overflow: hidden;
   }
 
   .item-class {
