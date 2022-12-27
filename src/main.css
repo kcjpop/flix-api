@@ -1,6 +1,10 @@
 @custom-media --large (min-width: 80em);
 @custom-media --small (max-width: 80em);
 
+html {
+  scroll-padding-top: 140px;
+}
+
 body {
   /* Default separator character used in type parameters, formal parameters, etc. */
   --sep: ', ';
@@ -9,8 +13,11 @@ body {
     Fira Mono, ui-monospace, SF Mono, Monaco, Droid Sans Mono, Source Code Pro,
     monospace;
 
-  --aside-width: 70vw;
-  --main-content-height: 100vh;
+  /* This is for mobile */
+  --aside-width: 50vw;
+
+  /* Need to use svh here or the address bar on mobile will cover the sidebar */
+  --main-content-height: 100svh;
 
   --surface-1: #fff;
 
