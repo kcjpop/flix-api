@@ -4,6 +4,7 @@ import Doc from './Doc.astro'
 import Signature from './Signature.astro'
 import Source from './Source.astro'
 import SourceGrid from './SourceGrid.astro'
+import Annotations from './Annotations.astro'
 
 const { defs } = Astro.props
 ---
@@ -15,6 +16,8 @@ const { defs } = Astro.props
     defs.map((sig) => (
       <Card id={`d-${sig.sym.name}`}>
         <div class="grid gap-3">
+          <Annotations ann={sig.ann} />
+
           <SourceGrid>
             <div class="font-semibold">
               <Signature sig={sig} />

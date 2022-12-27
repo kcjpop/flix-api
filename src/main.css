@@ -30,6 +30,7 @@ body {
   --t-kind: #8a8a8a;
   --t-keyword: #333;
   --t-effect: #d4671e;
+  --t-annotation: #b15422;
 
   @media (--large) {
     --aside-width: 15vw;
@@ -153,4 +154,8 @@ body {
 
 .t-effect {
   color: var(--t-effect);
+}
+
+.t-annotation {
+  color: var(--t-annotation);
 }
