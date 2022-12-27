@@ -1,0 +1,15 @@
+<style>
+  .typedef {
+    display: grid;
+    align-items: center;
+    gap: var(--size-2);
+
+    @media (--large) {
+      grid-template-columns: 1fr 8ch;
+    }
+  }
+</style>
+
+<div class="font-mono typedef">
+  <slot />
+</div>

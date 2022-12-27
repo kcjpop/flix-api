@@ -2,6 +2,7 @@
 import Doc from './Doc.astro'
 import Signature from './Signature.astro'
 import Source from './Source.astro'
+import SourceGrid from './SourceGrid.astro'
 
 const { defs, classList, summary, open = false } = Astro.props
 ---
@@ -14,10 +15,10 @@ const { defs, classList, summary, open = false } = Astro.props
       <div class="grid gap-2 stripped">
         {defs.map((sig) => (
           <div class="p-2">
-            <div class="font-mono flex gap-2 align-center justify-space-between">
+            <SourceGrid>
               <Signature sig={sig} />
               <Source loc={sig.loc} />
-            </div>
+            </SourceGrid>
             <div class="pl-3">
               <Doc doc={sig.doc} />
             </div>

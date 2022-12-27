@@ -12,6 +12,7 @@ import Source from '../components/Source.astro'
 import Card from '../components/Card.astro'
 import DefDetails from '../components/DefDetails.astro'
 import AsideLinks from '../components/AsideLinks.astro'
+import SourceGrid from '../components/SourceGrid.astro'
 
 export function getStaticPaths() {
   return getNamespaces().map((ns) => {
@@ -128,14 +129,15 @@ const namespaces = getNamespaces().map((ns) => ({
       {
         ns.classes?.map((c) => (
           <Card id={`c-${c.sym.name}`}>
-            <div class="font-mono flex align-center justify-space-between">
+            <SourceGrid>
               <div>
                 class <span class="t-name">{c.sym.name}</span>
                 [<TypeParam tparam={c.tparam} withKind />]
                 <TypeConstraints tcs={c.superClasses} />
               </div>
+
               <Source loc={c.loc} />
-            </div>
+            </SourceGrid>
 
             <div class="pl-3 mb-3">
               <Doc doc={c.doc} />
@@ -159,10 +161,10 @@ const namespaces = getNamespaces().map((ns) => ({
 
               <div class="grid gap-2 stripped">
                 {c.instances.map((inst) => (
-                  <div class="font-mono flex gap-2 align-center justify-space-between p-2">
+                  <SourceGrid>
                     <Instance inst={inst} />
                     <Source loc={inst.loc} />
-                  </div>
+                  </SourceGrid>
                 ))}
               </div>
             </details>
