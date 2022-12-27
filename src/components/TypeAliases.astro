@@ -1,0 +1,51 @@
+---
+import Card from './Card.astro'
+import Doc from './Doc.astro'
+import Source from './Source.astro'
+import SourceGrid from './SourceGrid.astro'
+import TypeParam from './TypeParam.astro'
+
+const { tas = [] } = Astro.props
+---
+
+<h3>Type Aliases</h3>
+
+<div class="grid gap-3">
+  {
+    tas.map((t) => (
+      <Card id={`ta-${t.sym.name}`}>
+        <div class="grid gap-3">
+          <SourceGrid>
+            <div class="font-semibold">
+              <span class="t-keyword">type alias</span>{' '}
+              <span class="t-name">{t.sym.name}</span>
+              {t.tparams?.length > 0 && (
+                <>
+                  [
+                  <span class="sep">
+                    {t.tparams.map((tparam) => (
+                      <span>
+                        <TypeParam tparam={tparam} withKind />
+                      </span>
+                    ))}
+                  </span>
+                  ]
+                </>
+              )}
+              <span> = </span>
+              <span class="t-type">{t.tpe}</span>
+            </div>
+
+            <Source loc={t.loc} />
+          </SourceGrid>
+
+          {t.doc && (
+            <div class="pl-3">
+              <Doc doc={t.doc} />
+            </div>
+          )}
+        </div>
+      </Card>
+    ))
+  }
+</div>

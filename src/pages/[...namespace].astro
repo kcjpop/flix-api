@@ -7,6 +7,7 @@ import AsideLinks from '../components/AsideLinks.astro'
 import Classes from '../components/Classes.astro'
 import Definitions from '../components/Definitions.astro'
 import Enums from '../components/Enums.astro'
+import TypeAliases from '../components/TypeAliases.astro'
 import BaseLayout from '../layouts/Base.astro'
 
 import IconArrowFromLeft from '../components/IconArrowFromLeft.astro'
@@ -86,6 +87,14 @@ const namespaces = getNamespaces().map((ns) => ({ link: `/${ns}`, name: ns }))
     ns.enums?.length > 0 && (
       <div class="px-3 grid gap-3 mb-3">
         <Enums enums={ns.enums} />
+      </div>
+    )
+  }
+
+  {
+    ns.typeAliases?.length > 0 && (
+      <div class="px-3 grid gap-3 mb-3">
+        <TypeAliases tas={ns.typeAliases} />
       </div>
     )
   }

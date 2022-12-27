@@ -18,7 +18,8 @@ const { enums = [] } = Astro.props
         <div class="grid gap-3">
           <SourceGrid>
             <div class="font-semibold">
-              enum <span class="t-name">{e.sym.name}</span>
+              <span class="t-keyword">enum</span>{' '}
+              <span class="t-name">{e.sym.name}</span>
               {e.tparams?.length > 0 && (
                 <>
                   [
