@@ -41,7 +41,20 @@ const namespaces = getNamespaces().map((ns) => ({
 <BaseLayout>
   <aside slot="left">
     <div class="aside aside--left" id="aside-left">
-      <a class="aside-btn-close aside-btn-close--left" href="#">Close</a>
+      <a title="Close" class="aside-btn-close aside-btn-close--left" href="#"
+        ><svg
+          stroke="currentColor"
+          fill="currentColor"
+          stroke-width="0"
+          viewBox="0 0 24 24"
+          height="1em"
+          width="1em"
+          xmlns="http://www.w3.org/2000/svg"
+          ><path
+            d="m16.192 6.344-4.243 4.242-4.242-4.242-1.414 1.414L10.535 12l-4.242 4.242 1.414 1.414 4.242-4.242 4.243 4.242 1.414-1.414L13.364 12l4.242-4.242z"
+          ></path>
+        </svg>
+      </a>
 
       <AsideLinks name="Namespaces" items={namespaces} />
     </div>
@@ -49,22 +62,66 @@ const namespaces = getNamespaces().map((ns) => ({
 
   <aside slot="right">
     <div class="aside aside--right" id="aside-right">
-      <a class="aside-btn-close aside-btn-close--right" href="#">Close</a>
+      <a title="Close" class="aside-btn-close aside-btn-close--right" href="#"
+        ><svg
+          stroke="currentColor"
+          fill="currentColor"
+          stroke-width="0"
+          viewBox="0 0 24 24"
+          height="1em"
+          width="1em"
+          xmlns="http://www.w3.org/2000/svg"
+          ><path
+            d="m16.192 6.344-4.243 4.242-4.242-4.242-1.414 1.414L10.535 12l-4.242 4.242 1.414 1.414 4.242-4.242 4.243 4.242 1.414-1.414L13.364 12l4.242-4.242z"
+          ></path>
+        </svg>
+      </a>
 
       <AsideLinks name="Classes" items={classes} />
       <AsideLinks name="Definitions" items={definitions} />
     </div>
   </aside>
 
-  <div class="sticky" style="--top: 0">
-    <a class={s.btnAside} href="#aside-left">ns</a>
+  <div
+    class="p-3 sticky"
+    style="--top: 0; border-bottom: 1px solid var(--gray-2)"
+  >
+    <div class="flex align-center justify-space-between">
+      <a role="button" class={s.btnAside} href="#aside-left">
+        <svg
+          stroke="currentColor"
+          fill="currentColor"
+          stroke-width="0"
+          viewBox="0 0 24 24"
+          height="1em"
+          width="1em"
+          xmlns="http://www.w3.org/2000/svg"
+          ><path
+            d="M4 6h2v12H4zm4 7h8.586l-4.293 4.293 1.414 1.414L20.414 12l-6.707-6.707-1.414 1.414L16.586 11H8z"
+          ></path>
+        </svg>
+      </a>
 
-    <h1 class="mb-5">{namespace}</h1>
+      <a role="button" class={s.btnAside} href="#aside-right"
+        ><svg
+          stroke="currentColor"
+          fill="currentColor"
+          stroke-width="0"
+          viewBox="0 0 24 24"
+          height="1em"
+          width="1em"
+          xmlns="http://www.w3.org/2000/svg"
+          ><path
+            d="M18 6h2v12h-2zm-2 5H7.414l4.293-4.293-1.414-1.414L3.586 12l6.707 6.707 1.414-1.414L7.414 13H16z"
+          ></path>
+        </svg>
+      </a>
+    </div>
 
-    <a class={s.btnAside} href="#aside-right">right</a>
+    <h1>{namespace}</h1>
   </div>
 
-  <div class="grid gap-3 mb-3">
+  <div class="px-3 grid gap-3 mb-3">
     <h3>Classes</h3>
 
     <div class="grid gap-3">
@@ -115,7 +172,7 @@ const namespaces = getNamespaces().map((ns) => ({
     </div>
   </div>
 
-  <div class="grid gap-3 mb-3">
+  <div class="px-3 grid gap-3 mb-3">
     <h3>Definitions</h3>
 
     <div class="grid gap-3">

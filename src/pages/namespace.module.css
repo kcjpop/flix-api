@@ -4,6 +4,11 @@
 }
 
 .btnAside {
+  padding: var(--size-2);
+  background-color: var(--gray-1);
+  color: var(--gray-9);
+  border-radius: var(--radius-1);
+
   @media (--large) {
     display: none;
   }

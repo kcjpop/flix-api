@@ -46,6 +46,11 @@
   padding-left: var(--size-3);
 }
 
+.px-3 {
+  padding-left: var(--size-3);
+  padding-right: var(--size-3);
+}
+
 .mb-2 {
   margin-bottom: var(--size-2);
 }

@@ -46,8 +46,9 @@ body {
 }
 
 .main {
-  padding-left: var(--size-3);
-  padding-right: var(--size-3);
+  display: grid;
+  gap: var(--size-3);
+  align-content: flex-start;
 
   @media (--large) {
     height: var(--main-content-height);
@@ -57,6 +58,7 @@ body {
 
 .aside {
   display: none;
+  position: relative;
 
   @media (--large) {
     display: block;
@@ -91,6 +93,15 @@ body {
 }
 
 .aside-btn-close {
+  position: absolute;
+  top: var(--size-2);
+  right: var(--size-2);
+  z-index: calc(var(--z-index-aside) + 1);
+  padding: var(--size-2);
+  background-color: var(--gray-1);
+  color: var(--gray-9);
+  border-radius: var(--radius-1);
+
   @media (--large) {
     display: none;
   }

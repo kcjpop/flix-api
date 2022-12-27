@@ -150,7 +150,8 @@
 :where(code, kbd, samp, pre) {
   font-family: var(--font-mono);
 }
-:where(:not(pre) > code, kbd) {
+
+:where(:not(pre) > kbd) {
   white-space: nowrap;
 }
 
