@@ -1,6 +1,6 @@
 {
   "version":"v0.34.0",
-  "namespaces":["Prelude","Applicative","Array","Assert","Benchmark","BigDecimal","BigInt","Bool","Chain","Channel","Char","Choice","Comparison","Console","Day01","Day02","Day03","Day04","Day06","Day08","DelayList","DelayMap","Environment","File","Fixpoint","Fixpoint/Ast","Fixpoint/Tuple","Float32","Float64","Foldable","Functor","GetOpt","Graph","Hash","Int16","Int32","Int64","Int8","Iterator","List","Map","Monad","Monoid","MultiMap","MutDeque","MutList","MutMap","MutSet","Nec","Nel","Object","Option","Order","Random","RedBlackTree","Reflect","Result","Set","String","StringBuilder","System/StdErr","System/StdIn","System/StdOut","Thread","Time","Time/Duration","Time/Epoch","Time/Instant","Traversable","Utils","Validation"],
+  "namespaces":["Prelude","Applicative","Array","Assert","Benchmark","BigDecimal","BigInt","Bool","Chain","Channel","Char","Choice","Comparison","Console","DelayList","DelayMap","Environment","File","Fixpoint","Fixpoint/Ast","Fixpoint/Tuple","Float32","Float64","Foldable","Functor","GetOpt","Graph","Hash","Int16","Int32","Int64","Int8","Iterator","List","Map","Monad","Monoid","MultiMap","MutDeque","MutList","MutMap","MutSet","Nec","Nel","Object","Option","Order","Random","RedBlackTree","Reflect","Result","Set","String","StringBuilder","System/StdErr","System/StdIn","System/StdOut","Thread","Time","Time/Duration","Time/Epoch","Time/Instant","Traversable","Utils","Validation"],
   "classes":{
     "Prelude":[{
       "sym":{

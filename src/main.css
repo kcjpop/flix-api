@@ -59,6 +59,7 @@ body {
   align-content: flex-start;
 
   @media (--large) {
+    scroll-padding-top: 110px;
     height: var(--main-content-height);
     overflow: auto;
   }
