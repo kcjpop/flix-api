@@ -1,6 +1,9 @@
 ---
 import Card from './Card.astro'
 import Doc from './Doc.astro'
+import Signature from './Signature.astro'
+import Source from './Source.astro'
+import SourceGrid from './SourceGrid.astro'
 
 const { defs } = Astro.props
 ---
@@ -9,13 +12,17 @@ const { defs } = Astro.props
 
 <div class="grid gap-3">
   {
-    defs.map((d) => (
-      <Card id={`d-${d.sym.name}`}>
-        <p class="font-mono">
-          def <span class="t-name">{d.sym.name}</span>
-        </p>
-
-        <Doc doc={d.doc} />
+    defs.map((sig) => (
+      <Card id={`d-${sig.sym.name}`}>
+        <div class="grid gap-3">
+          <SourceGrid>
+            <Signature sig={sig} />
+            <Source loc={sig.loc} />
+          </SourceGrid>
+          <div class="pl-3">
+            <Doc doc={sig.doc} />
+          </div>
+        </div>
       </Card>
     ))
   }
