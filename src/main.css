@@ -9,12 +9,12 @@ body {
     Fira Mono, ui-monospace, SF Mono, Monaco, Droid Sans Mono, Source Code Pro,
     monospace;
 
-  --aside-width: 30svw;
+  --aside-width: 70vw;
   --main-content-height: 100vh;
 
   --surface-1: #fff;
 
-  --z-index-aside: 1;
+  --z-index-aside: 1000;
 
   /* Tokens */
   --t-name: #b12250;
@@ -24,7 +24,7 @@ body {
   --t-effect: #d4671e;
 
   @media (--large) {
-    --aside-width: 15svw;
+    --aside-width: 15vw;
   }
 }
 
@@ -97,14 +97,16 @@ body {
 
   &::before {
     content: '';
-    background: #000;
-    opacity: 0.5;
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.5);
     position: fixed;
     width: 100vw;
     height: 100vh;
     top: 0;
+    z-index: 1;
   }
 }
+
 .aside-btn-close--left::before {
   left: var(--aside-width);
 }
