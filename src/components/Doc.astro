@@ -1,19 +1,19 @@
 ---
 import Markdown from './Markdown.astro'
 
-const doc = Astro.props.doc.join('\n')
+const doc = Astro.props.doc?.join('\n')
 ---
 
 <style>
   .doc {
     color: var(--gray-7);
   }
-
-  .doc p {
-    font-size: 0.9em;
-  }
 </style>
 
-<div class="doc">
-  <Markdown doc={doc} />
-</div>
+{
+  doc && (
+    <div class="doc">
+      <Markdown doc={doc} />
+    </div>
+  )
+}

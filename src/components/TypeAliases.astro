@@ -39,11 +39,7 @@ const { tas = [] } = Astro.props
             <Source loc={t.loc} />
           </SourceGrid>
 
-          {t.doc && (
-            <div class="pl-3">
-              <Doc doc={t.doc} />
-            </div>
-          )}
+          <Doc doc={t.doc} />
         </div>
       </Card>
     ))
