@@ -37,6 +37,8 @@ const namespaces = getNamespaces().map((ns) => ({ link: `/${ns}`, name: ns }))
 ---
 
 <BaseLayout>
+  <title slot="title">{namespace}</title>
+
   <aside slot="left">
     <div class="aside aside--left" id="aside-left">
       <a title="Close" class="aside-btn-close aside-btn-close--left" href="#">
