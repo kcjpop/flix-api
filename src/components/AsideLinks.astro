@@ -60,7 +60,7 @@ const { items, name, type } = Astro.props
     <div>
       <h4 class="header mb-2">{name}</h4>
 
-      <menu class="menu grid gap-2">
+      <menu class="menu grid gap-2 font-mono">
         {items?.map((item) => (
           <li class={`item-${type}`}>
             {type != null && <IconDotCircle />}

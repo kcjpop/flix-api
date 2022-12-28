@@ -107,37 +107,39 @@ const namespaces = getNamespaces().map((ns) => ({ link: `/${ns}`, name: ns }))
     </div>
   </div>
 
-  {
-    ns.classes?.length > 0 && (
-      <div class="px-3 grid gap-3 mb-3">
-        <Classes classes={ns.classes} s={s} />
-      </div>
-    )
-  }
+  <div class="grid gap-3 mb-3">
+    {
+      ns.classes?.length > 0 && (
+        <div class="px-3 grid gap-3">
+          <Classes classes={ns.classes} s={s} />
+        </div>
+      )
+    }
 
-  {
-    ns.enums?.length > 0 && (
-      <div class="px-3 grid gap-3 mb-3">
-        <Enums enums={ns.enums} />
-      </div>
-    )
-  }
+    {
+      ns.enums?.length > 0 && (
+        <div class="px-3 grid gap-3">
+          <Enums enums={ns.enums} />
+        </div>
+      )
+    }
 
-  {
-    ns.typeAliases?.length > 0 && (
-      <div class="px-3 grid gap-3 mb-3">
-        <TypeAliases tas={ns.typeAliases} />
-      </div>
-    )
-  }
+    {
+      ns.typeAliases?.length > 0 && (
+        <div class="px-3 grid gap-3">
+          <TypeAliases tas={ns.typeAliases} />
+        </div>
+      )
+    }
 
-  {
-    ns.defs?.length > 0 && (
-      <div class="px-3 grid gap-3 mb-3">
-        <Definitions defs={ns.defs} />
-      </div>
-    )
-  }
+    {
+      ns.defs?.length > 0 && (
+        <div class="px-3 grid gap-3">
+          <Definitions defs={ns.defs} />
+        </div>
+      )
+    }
+  </div>
 
   <script>
     function toggleOverflowHidden() {
