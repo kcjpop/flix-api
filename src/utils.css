@@ -87,8 +87,12 @@
   content: var(--sep);
 }
 
+section:target .stripped {
+  --strip-color: var(--yellow-1);
+}
+
 .stripped > *:nth-child(2n) {
-  background-color: var(--gray-1);
+  background-color: var(--strip-color, var(--gray-1));
 }
 
 .sticky {
