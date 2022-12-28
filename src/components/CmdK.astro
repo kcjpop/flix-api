@@ -11,7 +11,7 @@ import { getNamespaces } from '../data'
 
 <style>
   .dialog {
-    width: clamp(30svw, var(--size-7), 90svw);
+    width: clamp(60ch, var(--size-7), 90svw);
     padding: var(--size-3);
   }
 
@@ -38,9 +38,11 @@ import { getNamespaces } from '../data'
       id="js-cmdk-keyword"
       type="search"
       name="keyword"
-      placeholder="Type a namespace and press Enter to jump"
+      placeholder="Type a namespace and press Enter to jump, case insensitive"
       list="js-current-ns-defs"
       class="input"
+      autofocus
+      autocomplete="off"
     />
 
     <div class="flex gap-2 align-center justify-space-between">
@@ -85,8 +87,17 @@ import { getNamespaces } from '../data'
     else window.location.assign('/' + valid)
   })
 
-  on(document, 'keypress', (e) => {
+  on(document, 'keydown', (e) => {
+    // Don't do anything if the dialog is already open
+    // or we're composing in IME mode.
+    if (e.isComposing || e.keyCode === 229 || d.open) {
+      return
+    }
+
     if (e.key === 'k') {
+      e.preventDefault()
+      e.stopPropagation()
+
       // Reset keyword before showing Cmd K
       s.value = ''
       d.showModal()
