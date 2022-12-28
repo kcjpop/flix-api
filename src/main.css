@@ -21,7 +21,7 @@
 
   /* Height of header, including the namespace name and 2 buttons. Quite arbitrary. */
   --mobile-scroll-padding-top: 160px;
-  --desktop-scroll-padding-top: 120px;
+  --desktop-scroll-padding-top: 160px;
 
   /* Tokens */
   --t-name: #b12250;

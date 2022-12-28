@@ -18,7 +18,7 @@
 }
 
 .version {
-  font-size: 0.9em;
+  font-size: var(--font-size-fluid-1);
   font-weight: 600;
   color: var(--gray-6);
 }

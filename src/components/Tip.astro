@@ -1,0 +1,24 @@
+---
+import Icon from './Icon.astro'
+---
+
+<style>
+  .tip {
+    display: inline-flex;
+    gap: 1ch;
+    align-items: center;
+    background-color: var(--yellow-1);
+    color: var(--yellow-8);
+    padding: var(--size-2) var(--size-3);
+    border-radius: var(--radius-2);
+    font-size: 0.8em;
+
+    @media (--small) {
+      display: none;
+    }
+  }
+</style>
+<div class="tip">
+  <Icon name="lightbulb" size="20" />
+  Press <kbd>k</kbd> to quickly jump to another namespace
+</div>

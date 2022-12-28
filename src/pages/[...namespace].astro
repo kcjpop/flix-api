@@ -1,5 +1,5 @@
 ---
-import { getVersion, getNamespace, getNamespaces } from '../data.js'
+import { getNamespace, getNamespaces, getVersion } from '../data.js'
 
 import s from './namespace.module.css'
 
@@ -8,10 +8,9 @@ import Classes from '../components/Classes.astro'
 import Definitions from '../components/Definitions.astro'
 import Enums from '../components/Enums.astro'
 import TypeAliases from '../components/TypeAliases.astro'
+import Tip from '../components/Tip.astro'
 import BaseLayout from '../layouts/Base.astro'
 
-import IconArrowFromLeft from '../components/IconArrowFromLeft.astro'
-import IconArrowFromRight from '../components/IconArrowFromRight.astro'
 import IconClose from '../components/IconClose.astro'
 
 export function getStaticPaths() {
@@ -98,10 +97,13 @@ const namespaces = getNamespaces().map((ns) => ({ link: `/${ns}`, name: ns }))
     </div>
 
     <div class="flex align-center justify-space-between">
-      <h1 class="font-mono font-fluid-3">
-        {namespace}
-      </h1>
-      <div class={s.version}>{getVersion()}</div>
+      <div>
+        <h1 class="font-mono font-fluid-3">
+          {namespace}
+        </h1>
+        <div class={s.version}>{getVersion()}</div>
+      </div>
+      <Tip />
     </div>
   </div>
 
