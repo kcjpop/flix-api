@@ -7,6 +7,14 @@ import SourceGrid from './SourceGrid.astro'
 const { defs, classList, summary, open = false } = Astro.props
 ---
 
+<style>
+  .break {
+    margin-left: calc(var(--size-3) * -1);
+    margin-right: calc(var(--size-3) * -1);
+    padding: var(--size-3);
+  }
+</style>
+
 {
   defs?.length > 0 && (
     <details class:list={classList} open={open}>
@@ -14,14 +22,13 @@ const { defs, classList, summary, open = false } = Astro.props
 
       <div class="grid gap-2 stripped">
         {defs.map((sig) => (
-          <div class="p-2">
+          <div class="grid gap-3 break">
             <SourceGrid>
               <Signature sig={sig} />
               <Source loc={sig.loc} />
             </SourceGrid>
-            <div class="pl-3">
-              <Doc doc={sig.doc} />
-            </div>
+
+            {sig.doc?.length > 0 && <Doc doc={sig.doc} />}
           </div>
         ))}
       </div>

@@ -11,6 +11,18 @@ import TypeParam from './TypeParam.astro'
 const { classes = [], s } = Astro.props
 ---
 
+<style>
+  .instance-grid {
+    margin-left: calc(var(--size-3) * -1);
+    margin-right: calc(var(--size-3) * -1);
+    padding: var(--size-2) var(--size-3);
+    display: grid;
+    align-items: center;
+    gap: var(--size-2);
+    grid-template-columns: 1fr 8ch;
+  }
+</style>
+
 <h3 class="font-fluid-2">Classes</h3>
 
 <div class="grid gap-3">
@@ -27,7 +39,7 @@ const { classes = [], s } = Astro.props
           <Source loc={c.loc} />
         </SourceGrid>
 
-        <div class="pl-3 mb-3">
+        <div class="mb-3">
           <Doc doc={c.doc} />
         </div>
 
@@ -43,12 +55,12 @@ const { classes = [], s } = Astro.props
         <details class={s.details}>
           <summary class="mb-3">Instances</summary>
 
-          <div class="grid gap-2 stripped">
+          <div class="grid gap-2 stripped font-mono">
             {c.instances.map((inst) => (
-              <SourceGrid>
+              <div class="instance-grid">
                 <Instance inst={inst} />
                 <Source loc={inst.loc} />
-              </SourceGrid>
+              </div>
             ))}
           </div>
         </details>
