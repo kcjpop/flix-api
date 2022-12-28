@@ -13,13 +13,7 @@ const { sig } = Astro.props
   {
     sig.tparams?.length > 0 && (
       <>
-        [
-        <span class="sep">
-          {sig.tparams.map((tparam) => (
-            <TypeParam tparam={tparam} />
-          ))}
-        </span>
-        ]
+        [<span class="sep">{sig.tparams.map((tparam) => (<TypeParam tparam={tparam} />))}</span>]
       </>
     )
   }
@@ -27,13 +21,7 @@ const { sig } = Astro.props
   {
     sig.fparams?.length > 0 && sig.fparams?.[0]?.tpe !== 'Unit' && (
       <>
-        (
-        <span class="sep">
-          {sig.fparams.map((fparam) => (
-            <FormalParam fparam={fparam} />
-          ))}
-        </span>
-        )
+        (<span class="sep">{sig.fparams.map((fparam) => (<FormalParam fparam={fparam} />))}</span>)
       </>
     )
   }
