@@ -21,6 +21,14 @@ const { classes = [], s } = Astro.props
     gap: var(--size-2);
     grid-template-columns: 1fr 8ch;
   }
+
+  .nowrap {
+    @media (--small) {
+      white-space: nowrap;
+      overflow-x: scroll;
+      overflow-y: hidden;
+    }
+  }
 </style>
 
 <h3 class="font-fluid-2">Classes</h3>
@@ -30,10 +38,12 @@ const { classes = [], s } = Astro.props
     classes.map((c) => (
       <Card id={`c-${c.sym.name}`}>
         <SourceGrid>
-          <div class="font-semibold">
-            class <span class="t-name">{c.sym.name}</span>
-            [<TypeParam tparam={c.tparam} withKind />]
-            <TypeConstraints tcs={c.superClasses} />
+          <div class="nowrap">
+            <div class="font-semibold">
+              class <span class="t-name">{c.sym.name}</span>
+              [<TypeParam tparam={c.tparam} withKind />]
+              <TypeConstraints tcs={c.superClasses} />
+            </div>
           </div>
 
           <Source loc={c.loc} />
