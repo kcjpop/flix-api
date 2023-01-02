@@ -11,11 +11,12 @@
 
   /* This is for mobile */
   --aside-width: 70vw;
+  @media (--large) {
+    --aside-width: 15vw;
+  }
 
   /* Need to use svh here or the address bar on mobile will cover the sidebar */
   --main-content-height: 100svh;
-
-  --surface-1: #fff;
 
   --z-index-aside: 1000;
 
@@ -31,23 +32,69 @@
   --t-effect: #d4671e;
   --t-annotation: #b15422;
 
-  @media (--large) {
-    --aside-width: 15vw;
+  @media (prefers-color-scheme: dark) {
+    --t-name: #c14e73;
+    --t-type: #5981d0;
+    --t-kind: #969696;
+    --t-keyword: #999999;
+    --t-effect: #dd854b;
+    --t-annotation: #c1764e;
   }
 }
 
 /* Inline code */
 :where(:not(pre) > code) {
-  color: var(--red-7);
+  color: var(--inline-code);
 }
 
 html {
   scroll-padding-top: var(--mobile-scroll-padding-top);
+
+  color-scheme: light;
+  --surface-1: var(--gray-0);
+  --surface-2: var(--gray-2);
+
+  --text-1: var(--gray-8);
+  --text-2: var(--gray-7);
+  --inline-code: var(--red-7);
+
+  --border-1: var(--gray-3);
+
+  --link: var(--indigo-7);
+  --link-visited: var(--purple-7);
+
+  @media (prefers-color-scheme: dark) {
+    color-scheme: dark;
+    --surface-1: var(--gray-9);
+    --surface-2: var(--gray-8);
+
+    --text-1: var(--gray-1);
+    --text-2: var(--gray-4);
+    --inline-code: var(--red-4);
+
+    --border-1: var(--gray-8);
+
+    --link: var(--indigo-3);
+    --link-visited: var(--purple-3);
+  }
+}
+
+:where(a[href]) {
+  color: var(--brand, var(--link));
+
+  &:visited {
+    color: var(--link-visited);
+  }
+}
+
+:focus-visible {
+  outline-color: var(--brand, var(--link));
 }
 
 body {
-  color: var(--gray-8);
+  color: var(--text-1);
   font-family: var(--font-sans);
+  background: var(--surface-1);
 }
 
 .app {
@@ -99,7 +146,7 @@ body {
     background-color: var(--surface-1);
     z-index: var(--z-index-aside);
     box-shadow: var(--shadow-4);
-    border-left: 1px solid var(--gray-2);
+    border-left: 1px solid var(--border-1);
     height: var(--main-content-height);
     overflow: auto;
   }

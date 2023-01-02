@@ -92,7 +92,7 @@ section:target .stripped {
 }
 
 .stripped > *:nth-child(2n) {
-  background-color: var(--strip-color, var(--gray-1));
+  background-color: var(--strip-color, var(--surface-2));
 }
 
 .sticky {

@@ -5,8 +5,8 @@
 
 .btnAside {
   padding: var(--size-2);
-  background-color: var(--gray-1);
-  color: var(--gray-9);
+  background-color: var(--surface-2);
+  color: var(--text-2);
   border-radius: var(--radius-1);
   display: inline-flex;
   gap: 1ch;
@@ -17,8 +17,12 @@
   }
 }
 
+.btnAside:visited {
+  color: var(--text-2);
+}
+
 .version {
   font-size: var(--font-size-fluid-1);
   font-weight: 600;
-  color: var(--gray-6);
+  color: var(--text-2);
 }

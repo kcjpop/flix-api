@@ -1,14 +1,23 @@
 <style>
   .wrapper {
+    --bg: none;
+    --bd: var(--border-1);
+
     padding: var(--size-3);
     box-shadow: var(--shadow-2);
-    border: 1px solid var(--gray-2);
+    border: 1px solid var(--bd);
+    background-color: var(--bg);
     gap: var(--size-2);
   }
 
   .wrapper:target {
-    background-color: var(--yellow-0);
-    border-color: var(--yellow-7);
+    --bg: var(--yellow-2);
+    --bd: var(--yellow-7);
+
+    @media (prefers-color-scheme: dark) {
+      --bg: var(--gray-8);
+      --bd: var(--gray-1);
+    }
   }
 </style>
 
