@@ -13,7 +13,7 @@
     "open-props": "1.5.3"
   },
   "devDependencies": {
-    "astro": "1.7.2",
+    "astro": "1.8.0",
     "postcss": "8.4.20",
     "postcss-jit-props": "1.0.8",
     "postcss-preset-env": "7.8.3",
