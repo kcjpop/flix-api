@@ -45,6 +45,9 @@
 /* Inline code */
 :where(:not(pre) > code) {
   color: var(--inline-code);
+  @media (--small) {
+    word-break: break-word;
+  }
 }
 
 html {
