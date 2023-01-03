@@ -105,3 +105,12 @@ section:target .stripped {
 .overflow-hidden {
   overflow: hidden;
 }
+
+.mobile-nowrap {
+  @media (--small) {
+    white-space: nowrap;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    padding: var(--size-2);
+  }
+}

@@ -27,6 +27,7 @@ const { classes = [], s } = Astro.props
       white-space: nowrap;
       overflow-x: scroll;
       overflow-y: hidden;
+      padding-bottom: var(--size-2);
     }
   }
 </style>
@@ -38,7 +39,7 @@ const { classes = [], s } = Astro.props
     classes.map((c) => (
       <Card id={`c-${c.sym.name}`}>
         <SourceGrid>
-          <div class="nowrap">
+          <div class="mobile-nowrap">
             <div class="font-semibold">
               class <span class="t-name">{c.sym.name}</span>
               [<TypeParam tparam={c.tparam} withKind />]
