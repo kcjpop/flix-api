@@ -1,16 +1,34 @@
-# Astro Starter
+# Unofficial Flix API
 
-With [Open Props](https://open-props.style) and no TypeScript.
+An unofficial API documentation for [Flix](https://flix.dev/), deployed at https://flix-api.netlify.app.
 
-Originally use [pnpm](pnpm.io/). Change to your favorite package manager if needed.
+## To get started
 
-## Commands
+You need Node.js v16+ installed.
 
-| Command                 | Action                                           |
-| :---------------------- | :----------------------------------------------- |
-| `pnpm install`          | Installs dependencies                            |
-| `pnpm run dev`          | Starts local dev server at `localhost:3000`      |
-| `pnpm run build`        | Build your production site to `./dist/`          |
-| `pnpm run preview`      | Preview your build locally, before deploying     |
-| `pnpm run astro ...`    | Run CLI commands like `astro add`, `astro check` |
-| `pnpm run astro --help` | Get help using the Astro CLI                     |
+- Install pnpm if needed `npm i -g pnpm`
+
+- Install packages with `pnpm install`
+
+- Start the development server with `pnpm run dev`
+
+You should have a server running.
+
+## To generate `api.json` file
+
+- Download a copy of `flix.jar` from https://github.com/flix/flix/releases/latest and place it at the root of this repo.
+
+- Run
+
+```bash
+$ java -jar ./flix.jar --doc
+$ cp build/api/api.json src/
+```
+
+- You should have the latest `api.json`.
+
+## To build
+
+- Run `pnpm run build`
+
+- You will have a bunch of static HTML files in `dist/` and can deploy that folder to Netlify, Cloudflare Pages, Vercel, etc.
