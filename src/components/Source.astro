@@ -3,7 +3,7 @@ import { getVersion } from '../data'
 
 const { loc } = Astro.props
 
-const url = `https://github.com/flix/flix/tree/${getVersion()}/main/src/library/${
+const url = `https://github.com/flix/flix/tree/v${getVersion()}/main/src/library/${
   loc.name
 }#L${loc.beginLine}-L${loc.endLine}`
 ---
