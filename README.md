@@ -10,25 +10,23 @@ You need Node.js v16+ installed.
 
 - Install packages with `pnpm install`
 
-- Start the development server with `pnpm run dev`
-
-You should have a server running.
+- Start the development server with `pnpm run dev`.
 
 ## To generate `api.json` file
 
+`src/api.json` is the main source to generate pages. Whenever Flix has a new version, we need to update that file as well.
+
 - Download a copy of `flix.jar` from https://github.com/flix/flix/releases/latest and place it at the root of this repo.
 
-- Run
+- Run:
 
 ```bash
 $ java -jar ./flix.jar --doc
 $ cp build/api/api.json src/
 ```
 
-- You should have the latest `api.json`.
+- Start the development server as instructed above.
 
 ## To build
 
-- Run `pnpm run build`
-
-- You will have a bunch of static HTML files in `dist/` and can deploy that folder to Netlify, Cloudflare Pages, Vercel, etc.
+- Run `pnpm run build`. This will generate a bunch of static HTML files in `dist/`.
