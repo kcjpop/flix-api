@@ -109,8 +109,11 @@ section:target .stripped {
 .mobile-nowrap {
   @media (--small) {
     white-space: nowrap;
-    overflow-x: scroll;
+    overflow-x: auto;
     overflow-y: hidden;
-    padding: var(--size-2);
   }
+}
+
+.text-normal {
+  font-size: 1em;
 }

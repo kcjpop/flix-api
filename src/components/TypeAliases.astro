@@ -16,7 +16,10 @@ const { tas = [] } = Astro.props
       <Card id={`ta-${t.sym.name}`}>
         <div class="grid gap-3">
           <SourceGrid>
-            <div class="font-semibold">
+            <h4
+              id={`type-alias-${t.sym.name}`}
+              class="font-semibold text-normal"
+            >
               <span class="t-keyword">type alias</span>{' '}
               <span class="t-name">{t.sym.name}</span>
               {t.tparams?.length > 0 && (
@@ -34,7 +37,7 @@ const { tas = [] } = Astro.props
               )}
               <span> = </span>
               <span class="t-type">{t.tpe}</span>
-            </div>
+            </h4>
 
             <Source loc={t.loc} />
           </SourceGrid>

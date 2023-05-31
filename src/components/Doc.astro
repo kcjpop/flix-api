@@ -5,14 +5,14 @@ const doc = Astro.props.doc?.join('\n')
 ---
 
 <style>
-  .doc {
+  .content {
     color: var(--text-2);
   }
 </style>
 
 {
   doc && (
-    <div class="doc">
+    <div class="content">
       <Markdown doc={doc} />
     </div>
   )

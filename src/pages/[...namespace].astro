@@ -101,8 +101,10 @@ const namespaces = getNamespaces().map((ns) => ({ link: `/${ns}`, name: ns }))
         <h1 class="font-mono font-fluid-3">
           {namespace}
         </h1>
+
         <div class={s.version}>{getVersion()}</div>
       </div>
+
       <CmdK />
     </div>
   </div>

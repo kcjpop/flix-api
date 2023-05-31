@@ -17,7 +17,7 @@ const { enums = [] } = Astro.props
       <Card id={`e-${e.sym.name}`}>
         <div class="grid gap-3">
           <SourceGrid>
-            <div class="font-semibold">
+            <h4 id={`enum-${e.sym.name}`} class="font-semibold text-normal">
               <span class="t-keyword">enum</span>{' '}
               <span class="t-name">{e.sym.name}</span>
               {e.tparams?.length > 0 && (
@@ -45,7 +45,7 @@ const { enums = [] } = Astro.props
                   </span>
                 </>
               )}
-            </div>
+            </h4>
 
             <Source loc={e.loc} />
           </SourceGrid>

@@ -19,7 +19,14 @@ const { defs } = Astro.props
           <Annotations ann={sig.ann} />
 
           <SourceGrid>
-            <Signature sig={sig} class="font-semibold" />
+            <div class="mobile-nowrap">
+              <h4
+                id={`definition-${sig.sym.name}`}
+                class="font-semibold text-normal"
+              >
+                <Signature sig={sig} />
+              </h4>
+            </div>
 
             <Source loc={sig.loc} />
           </SourceGrid>

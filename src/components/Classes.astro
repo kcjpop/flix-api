@@ -40,11 +40,11 @@ const { classes = [], s } = Astro.props
       <Card id={`c-${c.sym.name}`}>
         <SourceGrid>
           <div class="mobile-nowrap">
-            <div class="font-semibold">
+            <h4 id={`class-${c.sym.name}`} class="font-semibold text-normal">
               class <span class="t-name">{c.sym.name}</span>
               [<TypeParam tparam={c.tparam} withKind />]
               <TypeConstraints tcs={c.superClasses} />
-            </div>
+            </h4>
           </div>
 
           <Source loc={c.loc} />
