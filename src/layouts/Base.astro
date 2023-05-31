@@ -4,8 +4,6 @@ import 'open-props'
 import '../normalize.css'
 import '../utils.css'
 import '../main.css'
-
-import CmdK from '../components/CmdK.astro'
 ---
 
 <html lang="en">
@@ -16,6 +14,10 @@ import CmdK from '../components/CmdK.astro'
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
     <meta name="color-scheme" content="light dark" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@docsearch/css@3"
+    />
 
     <slot name="title"><title>api.flix.dev</title></slot>
   </head>
@@ -29,7 +31,5 @@ import CmdK from '../components/CmdK.astro'
 
       <slot name="right" />
     </div>
-
-    <CmdK />
   </body>
 </html>

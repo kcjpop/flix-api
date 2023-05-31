@@ -8,7 +8,7 @@ import Classes from '../components/Classes.astro'
 import Definitions from '../components/Definitions.astro'
 import Enums from '../components/Enums.astro'
 import TypeAliases from '../components/TypeAliases.astro'
-import Tip from '../components/Tip.astro'
+import CmdK from '../components/CmdK.astro'
 import BaseLayout from '../layouts/Base.astro'
 
 import IconClose from '../components/IconClose.astro'
@@ -103,7 +103,7 @@ const namespaces = getNamespaces().map((ns) => ({ link: `/${ns}`, name: ns }))
         </h1>
         <div class={s.version}>{getVersion()}</div>
       </div>
-      <Tip />
+      <CmdK />
     </div>
   </div>
 
