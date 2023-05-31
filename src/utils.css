@@ -1,3 +1,6 @@
+@custom-media --large (min-width: 80em);
+@custom-media --small (max-width: 80em);
+
 .font-fluid-2 {
   font-size: var(--font-size-fluid-2);
 }
