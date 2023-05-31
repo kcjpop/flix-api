@@ -1,7 +1,7 @@
 ---
 const { sig } = Astro.props
 
-const eff = sig.eff === 'false' ? 'Impure' : sig.eff === 'true' ? null : sig.eff
+const eff = sig.eff === 'false' ? 'IO' : sig.eff === 'true' ? null : sig.eff
 ---
 
 <span>
@@ -9,7 +9,7 @@ const eff = sig.eff === 'false' ? 'Impure' : sig.eff === 'true' ? null : sig.eff
   {
     eff && (
       <>
-        & <span class="t-effect">{eff}</span>
+        \ <span class="t-effect">{eff}</span>
       </>
     )
   }
