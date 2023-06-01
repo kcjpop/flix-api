@@ -29,10 +29,6 @@
   font-style: italic;
 }
 
-.underline {
-  text-decoration: underline;
-}
-
 .flex {
   display: flex;
 }

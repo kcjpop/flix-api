@@ -22,15 +22,9 @@ const { enums = [] } = Astro.props
               <span class="t-name">{e.sym.name}</span>
               {e.tparams?.length > 0 && (
                 <>
-                  [
-                  <span class="sep">
-                    {e.tparams.map((tparam) => (
-                      <span>
-                        <TypeParam tparam={tparam} withKind />
-                      </span>
-                    ))}
-                  </span>
-                  ]
+                  [<span class="sep">{e.tparams.map((tparam) => (
+                      <span><TypeParam tparam={tparam} withKind /></span>
+                    ))}</span>]
                 </>
               )}
               {e.derives?.length > 0 && (
@@ -38,9 +32,7 @@ const { enums = [] } = Astro.props
                   <span class="t-keyword">with</span>
                   <span class="sep">
                     {e.derives.map((d) => (
-                      <span>
-                        <span class="underline">{d.name}</span>
-                      </span>
+                      <span>{d.name}</span>
                     ))}
                   </span>
                 </>

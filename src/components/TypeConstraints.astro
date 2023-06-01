@@ -10,7 +10,7 @@ const { tcs } = Astro.props
         {tcs?.map((tc) => (
           <span>
             {/* Should we have a link to those type constraint? */}
-            <span class="underline">{tc.sym.name}</span>[<span class="t-type">{tc.tpe}</span>]</span>
+            {tc.sym.name}[<span class="t-type">{tc.tpe}</span>]</span>
         ))}
       </span>
     </>
